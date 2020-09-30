@@ -457,19 +457,20 @@ router.get('/newAccount', function(req, res, next) {
               update.exec(function(err,data6){
               })
               }
-              if(coach=="AC1"){
+              if(coach[0]=="A"){
                 var ava=parseInt(data3[0].avaBertha1)+len
               var update=seatsModel.update({TrainNumber:req.query.TrainNumber},{$set:{avaBertha1:ava}})
               update.exec(function(err,data6){
               })
               }
-              if(coach=="AC2"){
+              if(coach[0]=="B"){
                 var ava=parseInt(data3[0].avaBertha2)+len
+                console.log(ava)
               var update=seatsModel.update({TrainNumber:req.query.TrainNumber},{$set:{avaBertha2:ava}})
               update.exec(function(err,data6){
               })
               }
-              if(coach=="AC3"){
+              if(coach[0]=="C"){
                 var ava=parseInt(data3[0].avaBertha3)+len
                 console.log(ava)
               var update=seatsModel.update({TrainNumber:req.query.TrainNumber},{$set:{avaBertha3:ava}})
@@ -625,11 +626,11 @@ router.get('/newAccount', function(req, res, next) {
         else if(req.body.class=="AC1"){
           for(i=1;i<=c;i++){
             if(i==c){
-              coaches=coaches+"AC1"
+              coaches=coaches+"A1"
               berths=berths+i
             }  
             else{
-            coaches=coaches+"AC1"+","
+            coaches=coaches+"A1"+","
             berths=berths+i+","
             }
   
@@ -652,11 +653,11 @@ router.get('/newAccount', function(req, res, next) {
           else if(req.body.class=="AC2") {
             for(i=1;i<=c;i++){
               if(i==c){
-                coaches=coaches+"AC2"
+                coaches=coaches+"B1"
                 berths=berths+i
               }  
               else{
-              coaches=coaches+"AC2"+","
+              coaches=coaches+"B1"+","
               berths=berths+i+","
               }
     
@@ -678,11 +679,11 @@ router.get('/newAccount', function(req, res, next) {
         else if(req.body.class=="AC3"){
           for(i=1;i<=c;i++){
             if(i==c){
-              coaches=coaches+"AC3"
+              coaches=coaches+"C1"
               berths=berths+i
             }  
             else{
-            coaches=coaches+"AC3"+","
+            coaches=coaches+"C1"+","
             berths=berths+i+","
             }
   
@@ -809,11 +810,11 @@ router.get('/newAccount', function(req, res, next) {
             
           if(i==c+parseInt(fill)){
             
-            coaches=coaches+"A"+parseInt(filledcouches)
+            coaches=coaches+"B"+parseInt(filledcouches)
             berths=berths+i
           }  
           else{
-          coaches=coaches+"A"+parseInt(filledcouches)+","
+          coaches=coaches+"B"+parseInt(filledcouches)+","
           berths=berths+i+","
           }
           
@@ -823,11 +824,11 @@ router.get('/newAccount', function(req, res, next) {
             for(i=1;i<=c;i++){
             
               if(i==c){
-                coaches=coaches+"A"+parseInt(filledcouches)
+                coaches=coaches+"B"+parseInt(filledcouches)
                 berths=berths+i
                 }  
                 else{
-                coaches=coaches+"A"+parseInt(filledcouches)+","
+                coaches=coaches+"B"+parseInt(filledcouches)+","
                 berths=berths+i+","
                 }
             }
@@ -857,11 +858,11 @@ router.get('/newAccount', function(req, res, next) {
             
           if(i==c+parseInt(fill)){
             
-            coaches=coaches+"A"+parseInt(filledcouches)
+            coaches=coaches+"C"+parseInt(filledcouches)
             berths=berths+i
           }  
           else{
-          coaches=coaches+"A"+parseInt(filledcouches)+","
+          coaches=coaches+"C"+parseInt(filledcouches)+","
           berths=berths+i+","
           }
           
@@ -871,11 +872,11 @@ router.get('/newAccount', function(req, res, next) {
             for(i=1;i<=c;i++){
             
               if(i==c){
-                coaches=coaches+"A"+parseInt(filledcouches)
+                coaches=coaches+"C"+parseInt(filledcouches)
                 berths=berths+i
                 }  
                 else{
-                coaches=coaches+"A"+parseInt(filledcouches)+","
+                coaches=coaches+"C"+parseInt(filledcouches)+","
                 berths=berths+i+","
                 }
             }
