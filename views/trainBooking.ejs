@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Train</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel='stylesheet' href='/stylesheets/booking.css' />
+    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  
+  <body>
+    <%- include header2.ejs %>
+    <style>
+    #add_train{
+      color: white;
+  }
+  </style>
+  
+  
+    <div class="col main pt-5 mt-3">
+        <h4 class="add_train"> Book  your Train </h4>
+                <br>
+                
+    <div class="container">
+    <div id="customer" >
+        <h5><strong>Train Name: <%=train[0].TrainName%><br>
+            Train Number: <%=train[0].TrainNumber%><br>
+            <%=train[0].SrcStation%> to <%=train[0].DesStation%><br>
+            Boarding Date: <%=date%><br>
+            <%if(booking.length==0){%>
+                Sleeper: <%=train[0].nums * 72%><br>
+                
+              <%}else{%>
+                Sleeper: <%=booking[0].avaBerths%><br>
+                
+                <%}%>
+                <%if(booking.length==0){%>
+                    AC1: <%=train[0].numa1 * 72%><br>
+                    
+                  <%}else{%>
+                    AC1: <%=booking[0].avaBertha1%><br>
+                    
+                    <%}%>
+
+                    <%if(booking.length==0){%>
+                        AC2: <%=train[0].numa2 * 72%><br>
+                        
+                      <%}else{%>
+                        AC2: <%=booking[0].avaBertha2%><br>
+                        
+                        <%}%>
+                        <%if(booking.length==0){%>
+                            AC3: <%=train[0].numa3 * 72%><br>
+                            
+                          <%}else{%>
+                            AC3: <%=booking[0].avaBertha3%><br>
+                            
+                            <%}%></strong></h5>
+            <p style="color: #005599;">Please fill the following form to book your journey</p>
+            
+<script>
+    var c=0
+    function check(){
+       if(document.getElementById("PName2").value==""){
+           c=1
+           document.getElementById("check").value=c
+           return true;
+       }
+       else if(document.getElementById("PName3").value==""){
+           c=2
+           document.getElementById("check").value=c
+           return true
+       }
+       else if(document.getElementById("PName4").value==""){
+           c=3
+           document.getElementById("check").value=c
+           return true;
+           
+       }
+       else if(document.getElementById("PName5").value==""){
+           c=4
+           document.getElementById("check").value=c
+           return true;
+       }
+       else if(document.getElementById("PName6").value==""){
+           c=5
+           document.getElementById("check").value=c
+           return true;
+       }
+       else{
+           c=6
+           document.getElementById("check").value=c
+           return true;
+       }
+
+   
+        alert(c)
+
+}
+    </script>
+            <form onsubmit="check();" id="idform" action="/trainBooking" method="POST" >
+        
+                <%if(error=="error"){%>
+               <strong><p style="color: red; text-align: center;">Email id or password is wrong!</p></strong> 
+               <%}%>
+               <%if(success=="yes"){%>
+               <strong><p id="suc" style="color: green; text-align: center;">Successfully Registered, Please Login</p></strong> 
+               <%}%>
+               <input value="<%=train[0].TrainNumber%>" name="number" style="display: none;">
+               <strong><p id="error" style="color: red; text-align: center;"></p></strong> 
+                   
+                 
+                 <div class="form-group">
+                    <label for="class">Select Class:</label>
+                    <select class="form-control" id="class" name="class">
+                      <option>Sleeper</option>
+                      <option>AC1</option>
+                      <option>AC2</option>
+                      <option>AC3</option>
+                    </select>
+                  </div>
+                  <input type="text" style="display: none;"  name="check" id="check"/>
+                 <label for="pessangers" >Passanger Details:</label>
+                 <div class="field_wrapper">
+                    Passanger 1
+                    <div class="row">
+                        
+                        <div class="col">
+                         <input type="text" class="form-control"  placeholder="Enter Name"  name="PName1" id="PName1" required/>
+                        </div>
+                        
+                            <div class="col">
+                            <input type="text" class="form-control"  placeholder="Enter Age" id="PAge1" name="PAge1" required/>
+                            </div>
+                         
+                                <div class="col">
+                                <select class="form-control" id="class" name="PGender1" id="PGender1">
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Others</option>
+                                  </select>
+                                
+                                </div>
+                                
+                               </div>
+                               <br>
+                               Passanger 2
+                               <div class="row">
+                                
+                                <div class="col">
+                                <input type="text" class="form-control" placeholder="Enter Name"  name="PName2" id="PName2"  />
+                                </div>
+                                
+                                    <div class="col">
+                                    <input type="text" class="form-control" placeholder="Enter Age" name="PAge2" id="PAge2"/>
+                                    </div>
+                                 
+                                        <div class="col">
+                                            <select class="form-control" id="class" name="PGender2" id="PGender2">
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Others</option>
+                                          </select>
+                                        
+                                        </div>
+                                        
+                                        </div>
+                                        
+                                       </div>
+                                       <br>
+                                       Passanger 3
+                                       <div class="row">
+                                        
+                                        <div class="col">
+                                        <input type="text" class="form-control" placeholder="Enter Name"  name="PName3" id="PName3" />
+                                        </div>
+                                        
+                                            <div class="col">
+                                            <input type="text" class="form-control" placeholder="Enter Age" name="PAge3"  id="PAge3"/>
+                                            </div>
+                                         
+                                                <div class="col">
+                                                    <select class="form-control" id="class" name="PGender3" id="PGender3">
+                                                        <option>Male</option>
+                                                        <option>Female</option>
+                                                        <option>Others</option>
+                                                      </select>
+                                                
+                                                </div>
+                                                
+                                               </div>
+                                               <br>
+                                               Passanger 4
+                                               <div class="row">
+                                               
+                                                <div class="col">
+                                                <input type="text" class="form-control" placeholder="Enter Name"  name="PName4" id="PName4" />
+                                                </div>
+                                                
+                                                    <div class="col">
+                                                    <input type="text" class="form-control" placeholder="Enter Age" name="PAge4" id="PAge4" />
+                                                    </div>
+                                                 
+                                                        <div class="col">
+                                                            <select class="form-control" id="class" name="PGender4" id="PGender4">
+                                                                <option>Male</option>
+                                                                <option>Female</option>
+                                                                <option>Others</option>
+                                                              </select>
+                                                        
+                                                        </div>
+                                                        
+                                                       </div>
+                                                       <br>
+                                                       Passanger 5
+                                                       <div class="row">
+                                                        
+                                                        <div class="col">
+                                                        <input type="text" class="form-control" placeholder="Enter Name"  name="PName5" id="PName5" />
+                                                        </div>
+                                                        
+                                                            <div class="col">
+                                                            <input type="text" class="form-control" placeholder="Enter Age" name="PAge5" id="PAge5"/>
+                                                            </div>
+                                                         
+                                                                <div class="col">
+                                                                    <select class="form-control" id="class" name="PGender5" id="PGender5">
+                                                                        <option>Male</option>
+                                                                        <option>Female</option>
+                                                                        <option>Others</option>
+                                                                      </select>
+                                                                
+                                                                </div>
+                                                                
+                                                               </div>
+                                                               <br>
+                                                               Passanger 6
+                                                               <div class="row">
+                                                                
+                                                                <div class="col">
+                                                                <input type="text" class="form-control" name="PName6"  placeholder="Enter Name" id="PName6" />
+                                                                </div>
+                                                                
+                                                                    <div class="col">
+                                                                    <input type="text" class="form-control" placeholder="Enter Age" name="PAge6" id="PAge6" />
+                                                                    </div>
+                                                                 
+                                                                        <div class="col">
+                                                                            <select class="form-control" id="class" name="PGender6" id="PGender6">
+                                                                                <option>Male</option>
+                                                                                <option>Female</option>
+                                                                                <option>Others</option>
+                                                                              </select>
+                                                                        
+                                                                        </div>
+                                                                        
+                                                                       </div>
+                        
+                    </div>
+               <br>
+                 
+                
+                 <div class="button">
+                 <button type="submit" onclick="check()" class="btn btn-primary"><i class="fa fa-book"> Book Ticket</i></button>
+                   </button>
+                   
+                   
+       
+                 </form>
+</div>
+
+           
+
+
+        <br>
+        
+        
+    </div>
+    </div>
+    <br>
+    <br>
+    
+    <script src="/javascripts/booking.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

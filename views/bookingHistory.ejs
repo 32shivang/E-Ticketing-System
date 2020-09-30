@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Train</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel='stylesheet' href='/stylesheets/customer.css' />
+    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  </head>
+
+  
+  <body>
+    <%- include header2.ejs %>
+    <style>
+    #history{
+      color: white;
+  }
+  </style>
+  <script>
+      if("<%=success%>"=="yes"){
+          location.href="/bookingHistory"
+      }
+      </script>
+    <div class="col main pt-5 mt-3">
+                
+                
+                
+        <div class="container">
+        
+        
+
+        
+
+
+      <h1 class="welcome"> Welcome <%=customer[0].Name%> </h1>
+      
+    <div id="customer" >
+      
+      <h4 class="add_train"> Select your Train to Cancel/Delete from Database </h4>
+      <%if(booking.length==0){%>
+        <h3 style="text-align: center;">No Booking History Available</h3>
+        <%}%>
+      <%for(i=0;i<booking.length;i++){%>
+        <br>
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title">PNR: <%=booking[i].pnr%></h5>
+          <div class="card-text">
+            <div class="row">
+                <div class="col-sm source">
+                  <%=booking[i].TrainName%><br><%=booking[i].TrainNumber%>
+                </div>
+                <div class="col-sm mid">
+                   
+                </div>
+                <div class="col-sm destination">
+                    Total Price<br><%=booking[i].totalPrice%>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-sm source">
+                  Date: <%=date%>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-sm source">
+                  Passanger/s Name<br> <%=booking[i].passangersName%>
+                </div>
+                <div class="col-sm mid">
+                    Passanger/s Coach<br> <%=booking[i].coaches%>
+                  </div>
+                  <div class="col-sm destination">
+                    Passanger/s Berth:<br> <%=booking[i].berths%>
+                  </div>
+                
+              </div>
+              
+               
+              
+          </div>
+          <div class="cancel" style="text-align: right;">
+          <a href="/trainCancel?pnr=<%=booking[i].pnr%>&TrainNumber=<%=booking[i].TrainNumber%>&berths=<%=booking[i].berths%>&coaches=<%=booking[i].coaches%>" class="btn btn-primary" id="booking">Cancel Train</a></div>
+        </div>
+      </div>
+      <%}%>
+        
+             <br>
+    </div>
+    </div>
+    <br>
+    <br>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Train</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel='stylesheet' href='/stylesheets/customer.css' />
+    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+  </head>
+
+  
+  <body>
+    <%- include header2.ejs %>
+    <style>
+      #book{
+        color: white;
+    }
+    </style>
+    <div class="col main pt-5 mt-3">
+                
+                
+                
+        <div class="container">
+        
+        
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form action="/changeDate" method="POST">
+                <div class="form-group" id="date">
+                  <label for="date"  >Date of Journey</label>
+                  <input type="date" class="form-control" name="date"  style="width:100%;height: 40px; background-color: #ECF0F1; " required>
+                 
+                </div>
+                <div style="text-align: center;">
+                <button type="submit"  class="btn btn-primary">Submit</button></div>
+                </form>
+
+              </div>
+              
+            </div>
+          </div>
+        </div>
+
+
+      <h1 class="welcome"> Welcome <%=customer[0].Name%> </h1>
+      
+    <div id="customer" >
+      
+      <h4 class="add_train"> Select your Train </h4>
+      <%for(i=0;i<trains.length;i++){%>
+        <br>
+      <div class="card" >
+        <div class="card-body">
+          <h5 class="card-title"><%=trains[i].TrainName%><br>Train Number: <%=trains[i].TrainNumber%></h5>
+          <div class="card-text">
+            
+            <div class="row">
+                <div class="col-sm source">
+                  <%=trains[i].SrcStation%><br>Departure Time: <%=trains[i].SrcStationTime%>
+                </div>
+                <div class="col-sm mid">
+                   To
+                </div>
+                <div class="col-sm destination">
+                    <%=trains[i].DesStation%><br>Estimate Time: <%=trains[i].DesStationTime%> hrs
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm source">
+                  Date: <%=date%>
+                </div>
+                
+              </div>
+              
+               
+              <div class="row">
+                <div class="col-sm boxes">
+                  <div class="box">
+
+                    SL<br>
+                  <%if(booking.length==0){%>
+                    <%=trains[i].nums * 72%><br>
+                    <%=trains[i].Prices%> INR
+                  <%}else{%>
+                    <%=booking[i].avaBerths%><br>
+                    <%=trains[i].Prices%> INR
+                    <%}%>
+                  </div>
+                </div>
+                <div class="col-sm boxes">
+                   <div class="box">
+                   
+                      
+                    AC1<br>
+                    <%if(booking.length==0){%>
+                      <%=trains[i].numa1 * 72%><br>
+                      <%=trains[i].Pricea1%> INR
+                    <%}else{%>
+                      <%=booking[i].avaBertha1%><br>
+                      <%=trains[i].Pricea1%> INR
+                      <%}%>
+                 
+                  </div>
+                </div>
+                <div class="col-sm boxes">
+                    <div class="box">
+                        
+                      
+                            AC2<br>
+                            <%if(booking.length==0){%>
+                              <%=trains[i].numa2 * 72%><br>
+                              <%=trains[i].Pricea2%> INR
+                            <%}else{%>
+                              <%=booking[i].avaBertha2%><br>
+                              <%=trains[i].Pricea2%> INR
+                              <%}%>
+                          
+                    </div>
+                </div>
+                <div class="col-sm boxes">
+                    <div class="box">
+                       
+                      
+                            AC3<br>
+                            <%if(booking.length==0){%>
+                              <%=trains[i].numa3 * 72%><br>
+                              <%=trains[i].Pricea3%> INR
+                            <%}else{%>
+                              <%=booking[i].avaBertha3%><br>
+                              <%=trains[i].Pricea3%> INR
+                              <%}%>
+                          
+                    </div>
+                </div>
+              </div>
+
+          </div>
+          <div class="booking">
+          <a href="/trainBooking?Train=<%=trains[i].TrainNumber%>" target="_blank"class="btn btn-primary" id="booking">Book Train</a></div>
+        </div>
+      </div>
+      <%}%>
+        
+             <br>
+    </div>
+    </div>
+    <br>
+    <br>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
+

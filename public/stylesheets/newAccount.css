@@ -1,0 +1,56 @@
+body{
+    height: 100%; 
+    background: url("/images/train-back.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  
+    @media only screen
+      and (min-device-width : 320px)
+      and (max-device-width : 600px){
+        #login{
+          background-color: white;
+          height: 100%;
+          width: 100%;
+          margin:0 auto;  
+          margin-top: 4%;
+          border-radius: 5px;
+          padding: 10px;
+        }
+    }
+    @media only screen
+      and (min-device-width : 600px)
+      and (max-device-width : 3000px)
+      {
+        #login{
+          background-color: white;
+          height: 100%;
+          width: 500px;
+          margin:0 auto; 
+          margin-top: 4%; 
+          border-radius: 5px;
+          padding: 10px;
+        }
+  
+    }
+    .button{
+     text-align: center; 
+    }
+    .new_account{
+      text-align: center;
+      color: blue;
+      margin-top: 5px;
+    }
+    .welcome{
+      text-align: center;
+      color: white;
+      margin-top: 3%;
+    }
+  
+    
+  
+  .add_train{
+    text-align: center;
+  }

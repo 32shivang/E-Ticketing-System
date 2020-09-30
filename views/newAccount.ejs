@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-Ticketing System</title>
+    <link rel='stylesheet' href='/stylesheets/newAccount.css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="/javascripts/newAccount.js"></script>
+  </head>
+  <body>
+    <div class="container ">
+      <h1 class="welcome"> Welcome to E-Ticketing System </h1>
+    <div id="login" >
+      <form  id="idform"  onsubmit="return validate();" action="/newAccount" method="POST">
+        
+         <%if(error=="error"){%>
+        <strong><p style="color: red; text-align: center;">Email id already exxists!</p></strong> 
+        <%}%>
+			  <strong><p id="suc" style="color: green; text-align: center;"></p></strong> 
+        <strong><p id="error" style="color: red; text-align: center;"></p></strong> 
+        <div class="form-group">
+            <label for="name" >Full Name</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name" style="width:100%;height: 40px; background-color: #ECF0F1; " required>
+          </div>
+
+          <div class="form-group">
+            <label for="email" >Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Email" style="width:100%;height: 40px; background-color: #ECF0F1; " required>
+          </div>
+          
+          <div class="form-group">
+            <label for="password">Password</label>
+            <i class="fa fa-eye icon" onmouseover="mouseoverPass();" onmouseout="mouseoutPass();" ></i>
+            <input type="password" class="form-control" id="password1" placeholder="Enter your Password" name="userpass" onkeyup="confirm()" style="widows: 100%;height: 40px; background-color: #ECF0F1;" required>
+            <script>
+              function mouseoverPass(obj) {
+                    var obj = document.getElementById('password1');
+                    obj.type = "text";
+                }
+               function mouseoutPass(obj) {
+                    var obj = document.getElementById('password1');
+                    obj.type = "password";
+                }
+              </script>
+          </div>
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <i class="fa fa-eye icon" onmouseover="mouseoverPass2();" onmouseout="mouseoutPass2();" ></i>
+            <input type="password" class="form-control" id="password2" placeholder="Enter your Password" name="confirmPassword" onkeyup="confirm()" style="widows: 100%;height: 40px; background-color: #ECF0F1;" required>
+            <script>
+                function mouseoverPass2(obj) {
+                      var obj = document.getElementById('password2');
+                      obj.type = "text";
+                  }
+                 function mouseoutPass2(obj) {
+                      var obj = document.getElementById('password2');
+                      obj.type = "password";
+                  }
+                </script>
+          </div>
+          <p id="info2" style="color: red; text-align: right;"></p>
+          <div class="form-group">
+            <label for="phone" >Phone Number</label>
+            <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter your Phone Number" style="width:100%;height: 40px; background-color: #ECF0F1; " onkeydown="return restrictAlphabets(event)" required>
+          </div>
+          <div class="button">
+          <button type="submit" class="btn btn-success"id="test4"><i class="fa fa-plus" > Create Account</i></button>
+            </button>
+            <p class="new_account"><a href="/">Already have an account?</a><br></p>
+            
+
+          </form>
+
+    </div>
+    </div>
+    <script src="/javascripts/newAccount.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+</body>
+</html>
+

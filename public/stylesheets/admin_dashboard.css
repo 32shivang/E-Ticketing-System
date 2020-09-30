@@ -1,0 +1,47 @@
+
+body{
+    background-color: whitesmoke;
+}
+.welcome{
+    text-align: center;
+}
+
+
+@media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 600px){
+        #admin{
+           
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin:0 auto;
+            background-color: white;
+            border: solid 2px black;
+            border-radius: 5px;
+        }
+  }
+  @media only screen
+    and (min-device-width : 600px)
+    and (max-device-width : 3000px)
+    {
+        #admin{
+            
+            width: 600px;
+            height: 100%;
+            padding: 10px;
+            margin:0 auto;
+            background-color: white;
+            border: solid 2px black;
+            border-radius: 5px;
+        }
+
+  }
+  .add_train{
+    text-align: center;
+  }
+  .button{
+      text-align: center;
+  }
+
+  

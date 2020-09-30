@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Trains</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
+    
+  </head>
+  <script>
+    $(document).ready(function() {
+    $('#table').DataTable();
+} );
+        </script>
+<style>
+#update_train{
+    color: white;
+}
+    </style>
+  
+  <body>
+    <%- include header.ejs %>
+    <script>
+    if("<%=refresh%>"=="yes"){
+        location.href="/updateTrain"
+    }
+    </script>
+    <div class="col main pt-5 mt-3">
+                
+                
+                
+        <div class="container">
+        
+      <h1 class="welcome" style="text-align: center;"> Welcome Admin </h1>
+      <br>
+    <div id="admin" >
+      <h4 class="add_train" style="text-align: center;"> Click on update to select the train </h4>
+      <table class="table table-striped" id="table">
+              <br>
+        <thead>
+         
+          <tr>
+            <th>S.No.</th>
+            <th>Train Number</th>
+            <th >Train Name</th>
+            <th>Select the train</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% var i;
+          for(i=trains.length-1;i>=0;i--){%>
+          <tr>
+            <td><%=trains.length-i%></td>
+            <td><%=trains[i].TrainNumber%></td>
+            <td><%=trains[i].TrainName%></td>
+            <td><button type="button" class="btn btn-primary" id="<%=trains[i].TrainNumber%>" onclick="update(this.id)">Update</button></td>
+            <%}%>
+          </tbody>
+          </table>
+        
+             <br>
+    </div>
+    </div>
+    <br>
+    <br>
+    <script>
+        
+      function update(id){
+          location.href="/updateTrains/update?TrainNumber="+id;
+      
+      }
+  </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+
+
+
+
+</body>
+</html>
+

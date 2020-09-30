@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Trains</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel='stylesheet' href='/stylesheets/admin_dashboard.css' />
+    <link rel="stylesheet" href="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.css">
+    
+  </head>
+
+  
+  <body>
+    <%- include header.ejs %>
+    <style>
+      #update_train{
+          color: white;
+      }
+          </style>
+    <div class="col main pt-5 mt-3">
+                
+                
+                
+        <div class="container">
+        
+      <h1 class="welcome"> Welcome Admin </h1>
+      <br>
+    <div id="admin" >
+      <h4 class="add_train"> Update Train </h4>
+        
+        <form onsubmit="return validate()" id="idform" action="/updateTrain?TrainNumber=<%=TrainNumber%>" method="POST">
+        
+            <%if(success=="yes"){%>
+            <strong><p id="suc" style="color: green; text-align: center;">Train details saved successfully!</p></strong> 
+            <%}%>
+            <%if(error=="yes"){%>
+            <strong><p id="suc" style="color: red; text-align: center;">Train already exits!</p></strong> 
+            <%}%>
+           <strong><p id="error" style="color: red; text-align: center;"></p></strong> 
+           <div class="form-group">
+            <label for="Train_number" >Train Number</label>
+            <input type="text" class="form-control" id="Train_number" value="<%=train[0].TrainNumber%>" name="Train_number" placeholder="Enter train number" style="width:100%;height: 40px; background-color: #ECF0F1; " onkeydown="return restrictAlphabets(event)" required>
+          </div>
+             <div class="form-group">
+               <label for="Train" >Train Name</label>
+               <input type="text" class="form-control" id="name" name="name" value="<%=train[0].TrainName%>" placeholder="Enter train name" style="width:100%;height: 40px; background-color: #ECF0F1; "  max="300" required >
+             </div>
+             
+             <div class="form-group">
+               <label for="src-station">Source Station</label>
+               <input type="text" class="form-control" id="src-station" value="<%=train[0].SrcStation%>" placeholder="Enter source station" name="src_station" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
+             </div>
+             <div class="form-group">
+              <label for="src-station-time">Source Station Departure Time</label>
+              <input type="time" class="form-control" value="<%=train[0].SrcStationTime%>" id="src-station-time" placeholder="Enter source station" name="src_station_time" style="width: 100%;height: 40px; background-color: #ECF0F1;" >
+            </div>
+             <div class="form-group">
+                <label for="des-station">Destination Station</label>
+                <input type="text" class="form-control" id="des-station" value="<%=train[0].DesStation%>" placeholder="Enter destination station" name="des_station" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)" required>
+              </div>
+              <div class="form-group">
+                <label for="des-station-time">Total Time to reach the destination (HRS)</label>
+                <input type="number" class="form-control" value="<%=train[0].DesStationTime%>" id="des-station-time" placeholder="Enter source station" name="des_station_time" style="width: 100%;height: 40px; background-color: #ECF0F1;" >
+              </div>
+              
+            <div class="form-group">
+                <label for="prices">Price of Sleeper per person</label>
+                <input type="text" class="form-control" value="<%=train[0].Prices%>" id="prices" placeholder="Price of SL" name="prices" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="nums">Number of Coaches in Sleeper class</label>
+                <input type="text" class="form-control" id="nums" value="<%=train[0].nums%>" placeholder="Example: 10" name="nums" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="pricea1">Price of AC 1 per person</label>
+                <input type="text" class="form-control" id="pricea1" value="<%=train[0].Pricea1%>" placeholder="Price of AC 1" name="pricea1" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="numa1">Number of Coaches in AC 1 class</label>
+                <input type="text" class="form-control" id="numa1" value="<%=train[0].numa1%>" placeholder="Example: 10" name="numa1" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="pricea2">Price of AC 2 per person</label>
+                <input type="text" class="form-control" id="pricea2" value="<%=train[0].Pricea2%>" placeholder="Price of AC 2" name="pricea2" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="numa2">Number of Coaches in AC 2 class</label>
+                <input type="text" class="form-control" id="numa2" value="<%=train[0].numa2%>" placeholder="Example: 10" name="numa2" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="pricea3">Price of AC 3 per person</label>
+                <input type="text" class="form-control" id="pricea3" placeholder="Price of AC 3" value="<%=train[0].Pricea3%>" name="pricea3" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="numa3">Number of Coaches in AC 3 class</label>
+                <input type="text" class="form-control" id="numa3" value="<%=train[0].numa3%>" placeholder="Example: 10" name="numa3" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <div class="form-group">
+                <label for="discount">Discount for children (age<=5) and old (age>=60) people</label>
+                <input type="text" class="form-control" id="discount" placeholder="Example: 20" name="discount" value="<%=train[0].Discount%>" style="width: 100%;height: 40px; background-color: #ECF0F1;" onkeydown="return restrictAlphabets(event)" required>
+              </div>
+              <p style="color: green; text-align: center;">Note: Each coach have 72 fixed seats</p>
+              
+            
+             <div class="button">
+             <button type="submit" class="btn btn-success"><i class="fa fa-refresh"> Update </i></button>
+               </button>
+               
+               
+   
+             </form>
+             <br>
+    </div>
+    </div>
+    <br>
+    <br>
+    
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://kit.fontawesome.com/228006f19a.js" crossorigin="anonymous"></script>
+<script src="http://bootstrap-tagsinput.github.io/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+</body>
+</html>
+

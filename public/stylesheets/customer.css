@@ -1,0 +1,91 @@
+
+body{
+    background-color: whitesmoke;
+}
+.welcome{
+    text-align: center;
+}
+
+
+@media only screen
+    and (min-device-width : 320px)
+    and (max-device-width : 600px){
+        #customer{
+           
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            margin:0 auto;
+            
+            border-radius: 5px;
+        }
+        .source{
+            color: gray;
+        }
+        .destination{
+            color: gray;
+        }
+        .mid{
+            color: gray;
+        }
+        
+  }
+  @media only screen
+    and (min-device-width : 600px)
+    and (max-device-width : 3000px)
+    {
+        #customer{
+            
+            width: 800px;
+            height: 100%;
+            padding: 10px;
+            margin:0 auto;
+            
+            border-radius: 5px;
+        }
+        .source{
+            color: gray;
+        }
+        .destination{
+            text-align: right;
+            color: gray;
+        }
+        .mid{
+            text-align: center;
+            color: gray;
+        }
+        
+
+  }
+  .add_train{
+    text-align: center;
+  }
+  .button{
+      text-align: center;
+  }
+
+  .boxes{
+    width:100%;
+    height:100%;
+    justify-content: center;
+}
+.box{
+    width:100px;
+    height: 80px;
+    margin:0 auto;
+    background-color: whitesmoke;
+    margin-top: 7px;
+    border-radius: 10px;
+    border: solid 2px #005599 ;
+    color: #005599 ;
+    text-align: center;
+}
+.booking{
+    margin-top: 10px;
+    text-align: right;
+}
+
+
+
+
+  

@@ -1,0 +1,79 @@
+@media screen and (max-width: 992px) {
+
+    .row-offcanvas {
+      position: relative;
+      -webkit-transition: all 0.25s ease-out;
+      -moz-transition: all 0.25s ease-out;
+      transition: all 0.25s ease-out;
+    }
+  
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+      left: -33%;
+    }
+  
+    .row-offcanvas-left.active {
+      left: 33%;
+      margin-left: -6px;
+    }
+  
+    .sidebar-offcanvas {
+      position: absolute;
+      top: 0;
+      width: 33%;
+      height: 100%;
+    }
+    
+  }
+  
+ 
+  @media screen and (max-width: 34em) {
+    .row-offcanvas-left
+    .sidebar-offcanvas {
+      left: -45%;
+    }
+  
+    .row-offcanvas-left.active {
+      left: 45%;
+      margin-left: -6px;
+    }
+    
+    .sidebar-offcanvas {
+      width: 45%;
+    }
+  }
+  
+  .card {
+      overflow:hidden;
+  }
+  
+  .card-body .rotate {
+      z-index: 8;
+      float: right;
+      height: 100%;
+  }
+  
+  .card-body .rotate i {
+      color: rgba(20, 20, 20, 0.15);
+      position: absolute;
+      left: 0;
+      left: auto;
+      right: -10px;
+      bottom: 0;
+      display: block;
+      -webkit-transform: rotate(-44deg);
+      -moz-transform: rotate(-44deg);
+      -o-transform: rotate(-44deg);
+      -ms-transform: rotate(-44deg);
+      transform: rotate(-44deg);
+  }
+  
+  #sidebar{
+    transition: 0.5s;
+  }
+  .bg{background:#005599;}
+    .nav-link{font-size:14px;}
+    #sidebar .nav-item{border-bottom:solid 1px #d2d2d2;}
+     #sidebar .nav-item a i{background:#333; color:#FFF; font-size:11px; width:24px; line-height:24px; text-align:center; border-radius:50%;}
+    #sidebar .nav-item a{color:#333;}  
+    #sidebarCollapse{height: 32px; margin-top:5px; line-height: 32px; padding: 0; font-size: 12px; width: 32px;}
