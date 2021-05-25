@@ -498,7 +498,7 @@ router.get('/trainCancel', function (req, res, next) {
   }
 })
 
-//Sample project test another jenkin
+//Sample project test another
 
 
 router.post('/trainBooking', function (req, res, next) {
